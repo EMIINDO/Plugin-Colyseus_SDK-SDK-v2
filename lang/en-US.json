@@ -3,7 +3,6 @@
   "fileDescription": "Strings for Colyseus.",
   "text": {
     "plugins": {
-
       "colyseus_sdk": {
         "name": "Colyseus",
         "description": "Colyseus SDK for Construct 3",
@@ -14,7 +13,6 @@
             "desc": "Default Endpoint to use on \"Connect\" action."
           }
         },
-
         "aceCategories": {
           "colyseus": "Client",
           "misc": "Misc",
@@ -25,7 +23,6 @@
           "room-state": "Room State",
           "room-state-collections": "Room State: Maps and Arrays"
         },
-
         "conditions": {
           "on-join-room": {
             "isStatic": true,
@@ -87,7 +84,6 @@
             "display-text": "For Each Room Available",
             "description": "Iterates over rooms available (Available during \"On Get Available Rooms\" condition)."
           },
-
           "is-message-type": {
             "list-name": "Compare Message [b]Type[/b]",
             "display-text": "Message type {0} [i]{1}[/i]",
@@ -149,7 +145,6 @@
                   "=": "= Equal to",
                   "!=": "≠ Not equal to"
                 }
-
               },
               "type": {
                 "name": "Type",
@@ -194,7 +189,6 @@
               }
             }
           },
-
           "schema-path-change": {
             "isStatic": true,
             "list-name": "On Change At",
@@ -207,7 +201,6 @@
               }
             }
           },
-
           "state-items-foreach": {
             "isStatic": true,
             "list-name": "For Each Item At",
@@ -220,7 +213,6 @@
               }
             }
           },
-
           "state-collection-item-add": {
             "isStatic": true,
             "list-name": "On Add Item",
@@ -257,7 +249,6 @@
               }
             }
           },
-
           "is-state-value-at": {
             "list-name": "Compare [b]Value At[/b]",
             "display-text": "Value At [i]{0}[/i] {1} [b]{2}[/b]",
@@ -277,7 +268,6 @@
               }
             }
           },
-
           "schema-compare-current-value": {
             "list-name": "Compare [b]Current Value[/b]",
             "display-text": "Current Value {0} [b]{1}[/b]",
@@ -391,7 +381,6 @@
               }
             }
           },
-
           "has-error-code": {
             "list-name": "Compare Error Code",
             "display-text": "Error Code [i]{0}[/i] {1}",
@@ -430,9 +419,7 @@
               }
             }
           }
-
         },
-
         "actions": {
           "set-endpoint": {
             "list-name": "Set endpoint",
@@ -445,7 +432,6 @@
               }
             }
           },
-
           "join-room": {
             "list-name": "Join existing room",
             "display-text": "Join room {0} with options {1}.",
@@ -461,7 +447,6 @@
               }
             }
           },
-
           "join-or-create-room": {
             "list-name": "Join or Create",
             "display-text": "Join room {0} with options {1}.",
@@ -477,7 +462,6 @@
               }
             }
           },
-
           "create-room": {
             "list-name": "Create room",
             "display-text": "Create room {0} with options {1}.",
@@ -493,7 +477,6 @@
               }
             }
           },
-
           "join-room-by-id": {
             "list-name": "Join by ID",
             "display-text": "Join room {0} with options {1}.",
@@ -509,7 +492,6 @@
               }
             }
           },
-
           "consume-seat-reservation": {
             "list-name": "Consume Seat Reservation",
             "display-text": "Consume seat reservation with {0}",
@@ -521,7 +503,6 @@
               }
             }
           },
-
           "reconnect-room": {
             "list-name": "Reconnect",
             "display-text": "Reconnect into a room using its cached ReconnectionToken ({0}).",
@@ -533,7 +514,6 @@
               }
             }
           },
-
           "room-send": {
             "list-name": "Send message",
             "display-text": "Send {0} with {1}",
@@ -549,7 +529,6 @@
               }
             }
           },
-
           "room-send-json": {
             "list-name": "Send JSON message",
             "display-text": "Send {0} with {1}",
@@ -565,7 +544,6 @@
               }
             }
           },
-
           "room-leave": {
             "list-name": "Leave room",
             "display-text": "Leave from the room with consented = {0}",
@@ -577,7 +555,6 @@
               }
             }
           },
-
           "get-available-rooms": {
             "list-name": "Get available rooms",
             "display-text": "Get available rooms by name: {0}",
@@ -590,7 +567,6 @@
             }
           }
         },
-
         "expressions": {
           "get-endpoint": {
             "description": "Get server endpoint",
@@ -690,12 +666,10 @@
               }
             }
           },
-
           "current-items-count": {
             "description": "Get total number of items on current collection. (Available during add/remove item events)",
             "translated-name": "CurrentItemsCount"
           },
-
           "count-items-at": {
             "description": "Get total number of items at a path. (Path must be a MapSchema or ArraySchema)",
             "translated-name": "CountItemsAt",
@@ -706,7 +680,6 @@
               }
             }
           },
-
           "close-code": {
             "description": "Get close code from the last disconnection. (Available during \"On Leave Room\")",
             "translated-name": "CloseCode"
@@ -719,7 +692,6 @@
             "description": "Get last error message",
             "translated-name": "ErrorMessage"
           },
-
           "error-code-sdk-exception": {
             "description": "Internal SDK error/exception",
             "translated-name": "ErrorCode_SDK_EXCEPTION"

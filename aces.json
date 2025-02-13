@@ -6,7 +6,10 @@
         "id": "set-endpoint",
         "scriptName": "SetEndpoint",
         "params": [
-          { "id": "endpoint", "type": "string" }
+          {
+            "id": "endpoint",
+            "type": "string"
+          }
         ]
       }
     ],
@@ -19,7 +22,6 @@
       }
     ]
   },
-
   "misc": {
     "expressions": [
       {
@@ -28,12 +30,15 @@
         "scriptName": "JSON",
         "returnType": "string",
         "params": [
-          { "id": "data", "type": "string", "initialValue": "{}" }
+          {
+            "id": "data",
+            "type": "string",
+            "initialValue": "{}"
+          }
         ]
       }
     ]
   },
-
   "error-handling": {
     "conditions": [
       {
@@ -42,8 +47,19 @@
         "scriptName": "HasErrorCode",
         "returnType": "boolean",
         "params": [
-          { "id": "cmp", "type": "combo", "items": ["=", "!="] },
-          { "id": "code", "type": "number", "initialValue": 0 }
+          {
+            "id": "cmp",
+            "type": "combo",
+            "items": [
+              "=",
+              "!="
+            ]
+          },
+          {
+            "id": "code",
+            "type": "number",
+            "initialValue": 0
+          }
         ]
       },
       {
@@ -52,8 +68,19 @@
         "scriptName": "HasErrorMessage",
         "returnType": "boolean",
         "params": [
-          { "id": "cmp", "type": "combo", "items": ["=", "!="] },
-          { "id": "message", "type": "string", "initialValue": "" }
+          {
+            "id": "cmp",
+            "type": "combo",
+            "items": [
+              "=",
+              "!="
+            ]
+          },
+          {
+            "id": "message",
+            "type": "string",
+            "initialValue": ""
+          }
         ]
       },
       {
@@ -119,7 +146,6 @@
       }
     ]
   },
-
   "matchmaking": {
     "conditions": [
       {
@@ -149,8 +175,16 @@
         "id": "join-room",
         "scriptName": "JoinRoom",
         "params": [
-          { "id": "name", "type": "string", "initialValue": "\"my_room\""  },
-          { "id": "options", "type": "string", "initialValue": "Colyseus.JSON(\"{token: 'xyz'}\")"  }
+          {
+            "id": "name",
+            "type": "string",
+            "initialValue": "\"my_room\""
+          },
+          {
+            "id": "options",
+            "type": "string",
+            "initialValue": "Colyseus.JSON(\"{token: 'xyz'}\")"
+          }
         ]
       },
       {
@@ -158,50 +192,81 @@
         "scriptName": "JoinOrCreateRoom",
         "highlight": true,
         "params": [
-          { "id": "name", "type": "string", "initialValue": "\"my_room\"" },
-          { "id": "options", "type": "string", "initialValue": "Colyseus.JSON(\"{token: 'xyz'}\")" }
+          {
+            "id": "name",
+            "type": "string",
+            "initialValue": "\"my_room\""
+          },
+          {
+            "id": "options",
+            "type": "string",
+            "initialValue": "Colyseus.JSON(\"{token: 'xyz'}\")"
+          }
         ]
       },
       {
         "id": "create-room",
         "scriptName": "CreateRoom",
         "params": [
-          { "id": "name", "type": "string", "initialValue": "\"my_room\""  },
-          { "id": "options", "type": "string", "initialValue": "Colyseus.JSON(\"{token: 'xyz'}\")"  }
+          {
+            "id": "name",
+            "type": "string",
+            "initialValue": "\"my_room\""
+          },
+          {
+            "id": "options",
+            "type": "string",
+            "initialValue": "Colyseus.JSON(\"{token: 'xyz'}\")"
+          }
         ]
       },
       {
         "id": "join-room-by-id",
         "scriptName": "JoinRoomById",
         "params": [
-          { "id": "roomId", "type": "string" },
-          { "id": "options", "type": "string", "initialValue": "Colyseus.JSON(\"{token: 'xyz'}\")"  }
+          {
+            "id": "roomId",
+            "type": "string"
+          },
+          {
+            "id": "options",
+            "type": "string",
+            "initialValue": "Colyseus.JSON(\"{token: 'xyz'}\")"
+          }
         ]
       },
       {
         "id": "consume-seat-reservation",
         "scriptName": "ConsumeSeatReservation",
         "params": [
-          { "id": "reservation", "type": "string" }
+          {
+            "id": "reservation",
+            "type": "string"
+          }
         ]
       },
       {
         "id": "reconnect-room",
         "scriptName": "ReconnectRoom",
         "params": [
-          { "id": "reconnectionToken", "type": "string" }
+          {
+            "id": "reconnectionToken",
+            "type": "string"
+          }
         ]
       },
       {
         "id": "get-available-rooms",
         "scriptName": "GetAvailableRooms",
         "params": [
-          { "id": "name", "type": "string" }
+          {
+            "id": "name",
+            "type": "string"
+          }
         ]
       }
     ]
   },
-
   "room": {
     "conditions": [
       {
@@ -210,7 +275,10 @@
         "highlight": true,
         "isTrigger": true,
         "params": [
-          { "id": "type", "type": "string" }
+          {
+            "id": "type",
+            "type": "string"
+          }
         ]
       },
       {
@@ -229,17 +297,19 @@
         "isTrigger": true
       }
     ],
-
     "actions": [
       {
         "id": "room-leave",
         "scriptName": "RoomLeave",
         "params": [
-          { "id": "consented", "type": "boolean", "initialValue": "true" }
+          {
+            "id": "consented",
+            "type": "boolean",
+            "initialValue": "true"
+          }
         ]
       }
     ],
-
     "expressions": [
       {
         "id": "room-id",
@@ -285,72 +355,140 @@
       }
     ]
   },
-
   "messages": {
     "actions": [
       {
         "id": "room-send",
         "scriptName": "RoomSend",
         "params": [
-          { "id": "type", "type": "string" },
-          { "id": "message", "type": "any" }
+          {
+            "id": "type",
+            "type": "string"
+          },
+          {
+            "id": "message",
+            "type": "any"
+          }
         ]
       },
       {
         "id": "room-send-json",
         "scriptName": "RoomSendJSON",
         "params": [
-          { "id": "type", "type": "string" },
-          { "id": "message", "type": "string" }
+          {
+            "id": "type",
+            "type": "string"
+          },
+          {
+            "id": "message",
+            "type": "string"
+          }
         ]
       }
     ],
-
-    "conditions":[
+    "conditions": [
       {
         "id": "is-message-type",
         "scriptName": "CompareMessageType",
         "params": [
-          { "id": "cmp", "type": "cmp" },
-          { "id": "type", "type": "any", "initialValue": "\"start\"" }
+          {
+            "id": "cmp",
+            "type": "cmp"
+          },
+          {
+            "id": "type",
+            "type": "any",
+            "initialValue": "\"start\""
+          }
         ]
       },
       {
         "id": "is-message-value",
         "scriptName": "CompareMessageValue",
         "params": [
-          { "id": "cmp", "type": "cmp" },
-          { "id": "value", "type": "any" }
+          {
+            "id": "cmp",
+            "type": "cmp"
+          },
+          {
+            "id": "value",
+            "type": "any"
+          }
         ]
       },
       {
         "id": "is-message-value-at",
         "scriptName": "CompareMessageValueAt",
         "params": [
-          { "id": "path", "type": "string" },
-          { "id": "cmp", "type": "cmp" },
-          { "id": "value", "type": "any" }
+          {
+            "id": "path",
+            "type": "string"
+          },
+          {
+            "id": "cmp",
+            "type": "cmp"
+          },
+          {
+            "id": "value",
+            "type": "any"
+          }
         ]
       },
       {
         "id": "is-message-value-of-type",
         "scriptName": "CompareMessageValueOfType",
         "params": [
-          { "id": "cmp", "type": "combo", "items": ["=", "!="] },
-          { "id": "type", "type": "combo", "items": ["string", "number", "boolean", "undefined", "object"] }
+          {
+            "id": "cmp",
+            "type": "combo",
+            "items": [
+              "=",
+              "!="
+            ]
+          },
+          {
+            "id": "type",
+            "type": "combo",
+            "items": [
+              "string",
+              "number",
+              "boolean",
+              "undefined",
+              "object"
+            ]
+          }
         ]
       },
       {
         "id": "is-message-value-of-type-at",
         "scriptName": "CompareMessageValueAtOfType",
         "params": [
-          { "id": "path", "type": "string" },
-          { "id": "cmp", "type": "combo", "items": ["=", "!="]},
-          { "id": "type", "type": "combo", "items": ["string", "number", "boolean", "undefined", "object"] }
+          {
+            "id": "path",
+            "type": "string"
+          },
+          {
+            "id": "cmp",
+            "type": "combo",
+            "items": [
+              "=",
+              "!="
+            ]
+          },
+          {
+            "id": "type",
+            "type": "combo",
+            "items": [
+              "string",
+              "number",
+              "boolean",
+              "undefined",
+              "object"
+            ]
+          }
         ]
       }
     ],
-
     "expressions": [
       {
         "id": "message-type",
@@ -370,7 +508,11 @@
         "scriptName": "MessageValueAt",
         "returnType": "any",
         "params": [
-          { "id": "path", "type": "string", "initialValue": "" }
+          {
+            "id": "path",
+            "type": "string",
+            "initialValue": ""
+          }
         ]
       },
       {
@@ -385,12 +527,15 @@
         "scriptName": "MessageValueAtType",
         "returnType": "string",
         "params": [
-          { "id": "path", "type": "string", "initialValue": "" }
+          {
+            "id": "path",
+            "type": "string",
+            "initialValue": ""
+          }
         ]
       }
     ]
   },
-
   "room-state": {
     "conditions": [
       {
@@ -398,45 +543,77 @@
         "scriptName": "OnChangeAtPath",
         "isTrigger": true,
         "params": [
-          { "id": "path", "type": "string" }
+          {
+            "id": "path",
+            "type": "string"
+          }
         ]
       },
       {
         "id": "is-state-value-at",
         "scriptName": "CompareStateValueAt",
         "params": [
-          { "id": "path", "type": "string" },
-          { "id": "cmp", "type": "cmp" },
-          { "id": "value", "type": "any" }
+          {
+            "id": "path",
+            "type": "string"
+          },
+          {
+            "id": "cmp",
+            "type": "cmp"
+          },
+          {
+            "id": "value",
+            "type": "any"
+          }
         ]
       },
       {
         "id": "schema-compare-current-value",
         "scriptName": "CompareCurrentValue",
         "params": [
-          { "id": "cmp", "type": "cmp" },
-          { "id": "value", "type": "any" }
+          {
+            "id": "cmp",
+            "type": "cmp"
+          },
+          {
+            "id": "value",
+            "type": "any"
+          }
         ]
       },
       {
         "id": "schema-compare-current-value-at",
         "scriptName": "CompareCurrentValueAt",
         "params": [
-          { "id": "path", "type": "string" },
-          { "id": "cmp", "type": "cmp" },
-          { "id": "value", "type": "any" }
+          {
+            "id": "path",
+            "type": "string"
+          },
+          {
+            "id": "cmp",
+            "type": "cmp"
+          },
+          {
+            "id": "value",
+            "type": "any"
+          }
         ]
       },
       {
         "id": "schema-compare-current-key",
         "scriptName": "CompareCurrentKey",
         "params": [
-          { "id": "cmp", "type": "cmp" },
-          { "id": "key", "type": "string" }
+          {
+            "id": "cmp",
+            "type": "cmp"
+          },
+          {
+            "id": "key",
+            "type": "string"
+          }
         ]
       }
     ],
-
     "expressions": [
       {
         "id": "state-value",
@@ -444,7 +621,11 @@
         "scriptName": "State",
         "returnType": "any",
         "params": [
-          { "id": "path", "type": "string", "initialValue": "" }
+          {
+            "id": "path",
+            "type": "string",
+            "initialValue": ""
+          }
         ]
       },
       {
@@ -471,7 +652,11 @@
         "scriptName": "CurrentValueAt",
         "returnType": "any",
         "params": [
-          { "id": "path", "type": "string", "initialValue": "" }
+          {
+            "id": "path",
+            "type": "string",
+            "initialValue": ""
+          }
         ]
       },
       {
@@ -482,7 +667,6 @@
       }
     ]
   },
-
   "room-state-collections": {
     "conditions": [
       {
@@ -490,7 +674,10 @@
         "scriptName": "ForEachItemAt",
         "isLooping": true,
         "params": [
-          { "id": "path", "type": "string" }
+          {
+            "id": "path",
+            "type": "string"
+          }
         ]
       },
       {
@@ -499,7 +686,10 @@
         "isTrigger": true,
         "highlight": true,
         "params": [
-          { "id": "path", "type": "string" }
+          {
+            "id": "path",
+            "type": "string"
+          }
         ]
       },
       {
@@ -507,7 +697,10 @@
         "scriptName": "OnCollectionItemChange",
         "isTrigger": true,
         "params": [
-          { "id": "path", "type": "string" }
+          {
+            "id": "path",
+            "type": "string"
+          }
         ]
       },
       {
@@ -516,40 +709,70 @@
         "isTrigger": true,
         "highlight": true,
         "params": [
-          { "id": "path", "type": "string" }
+          {
+            "id": "path",
+            "type": "string"
+          }
         ]
       },
       {
         "id": "schema-compare-items-at-count",
         "scriptName": "CompareItemsAtCount",
         "params": [
-          { "id": "path", "type": "string" },
-          { "id": "cmp", "type": "cmp" },
-          { "id": "count", "type": "number" }
+          {
+            "id": "path",
+            "type": "string"
+          },
+          {
+            "id": "cmp",
+            "type": "cmp"
+          },
+          {
+            "id": "count",
+            "type": "number"
+          }
         ]
       },
       {
         "id": "schema-compare-current-items-count",
         "scriptName": "CompareCurrentItemsCount",
         "params": [
-          { "id": "cmp", "type": "cmp" },
-          { "id": "count", "type": "number" }
+          {
+            "id": "cmp",
+            "type": "cmp"
+          },
+          {
+            "id": "count",
+            "type": "number"
+          }
         ]
       },
       {
         "id": "schema-array-has-value",
         "scriptName": "ArrayHasValue",
         "params": [
-          { "id": "path", "type": "string" },
-          { "id": "value", "type": "any" }
+          {
+            "id": "path",
+            "type": "string"
+          },
+          {
+            "id": "value",
+            "type": "any"
+          }
         ]
       },
       {
         "id": "schema-map-has-key",
         "scriptName": "MapHasKey",
         "params": [
-          { "id": "path", "type": "string" },
-          { "id": "key", "type": "string" }
+          {
+            "id": "path",
+            "type": "string"
+          },
+          {
+            "id": "key",
+            "type": "string"
+          }
         ]
       }
     ],
@@ -566,7 +789,10 @@
         "scriptName": "CountItemsAt",
         "returnType": "number",
         "params": [
-          { "id": "path", "type": "string" }
+          {
+            "id": "path",
+            "type": "string"
+          }
         ]
       }
     ]

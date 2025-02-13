@@ -28,8 +28,8 @@
       return false;
     }
   }
-
-  globalThis.C3.Plugins.Colyseus_SDK.Cnds =
+    const C3 = globalThis.C3;
+  C3.Plugins.Colyseus_SDK.Cnds =
   {
     // Matchmaking
     OnGetAvailableRooms() { return true; },
@@ -37,7 +37,10 @@
     OnJoinError() { return true; },
     OnAnyError() { return true; },
     ForEachRoomAvailable() {
-      const globalThis = this;
+        const globalThis = this;
+
+        
+      
       if (globalThis.lastValue && globalThis.lastValue.length > 0) {
         const runtime = this._runtime;
         const eventSheetManager = runtime.GetEventSheetManager();
@@ -131,7 +134,7 @@
       if (validCollection) {
         // Get necessary references
         // https://www.construct.net/en/make-games/manuals/addon-sdk/runtime-reference/event-sheet-classes/eventblock#internalH1Link0
-        const runtime = this._runtime;
+        const runtime = this.runtime;
         const eventSheetManager = runtime.GetEventSheetManager();
         const currentEvent = runtime.GetCurrentEvent();
         const solModifiers = currentEvent.GetSolModifiers();
