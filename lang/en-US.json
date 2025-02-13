@@ -1,0 +1,763 @@
+{
+  "languageTag": "en-US",
+  "fileDescription": "Strings for Colyseus.",
+  "text": {
+    "plugins": {
+
+      "colyseus_sdk": {
+        "name": "Colyseus",
+        "description": "Colyseus SDK for Construct 3",
+        "help-url": "https://docs.colyseus.io/",
+        "properties": {
+          "endpoint": {
+            "name": "Default Endpoint",
+            "desc": "Default Endpoint to use on \"Connect\" action."
+          }
+        },
+
+        "aceCategories": {
+          "colyseus": "Client",
+          "misc": "Misc",
+          "error-handling": "Error Handling",
+          "matchmaking": "Match-making",
+          "room": "Room",
+          "messages": "Room Messages",
+          "room-state": "Room State",
+          "room-state-collections": "Room State: Maps and Arrays"
+        },
+
+        "conditions": {
+          "on-join-room": {
+            "isStatic": true,
+            "list-name": "On Join Room",
+            "display-text": "On Join Room",
+            "description": "Triggered when joined successfully into a room."
+          },
+          "on-leave-room": {
+            "isStatic": true,
+            "list-name": "On Leave Room",
+            "display-text": "On Leave Room",
+            "description": "Triggered when left from a room."
+          },
+          "on-join-error": {
+            "isStatic": true,
+            "list-name": "On Join Error",
+            "display-text": "On Join Error",
+            "description": "Triggered when failing to join a room."
+          },
+          "on-error": {
+            "isStatic": true,
+            "list-name": "On Error (any)",
+            "display-text": "On Error (any)",
+            "description": "Triggered when any error come from the Colyseus SDK. (Prefer using specific error handlers such as \"On Join Error\" rather than this one.)"
+          },
+          "on-room-error": {
+            "isStatic": true,
+            "list-name": "On Room Error",
+            "display-text": "On Room Error",
+            "description": "Triggered when an error happened on the server."
+          },
+          "on-room-message": {
+            "isStatic": true,
+            "list-name": "On Message",
+            "display-text": "On [i]{0}[/i] Message",
+            "description": "Triggered when the room broadcasts a message, or sends a message directly to this client.",
+            "params": {
+              "type": {
+                "name": "Type",
+                "desc": "Message type. Wildcard is supported via \"*\"."
+              }
+            }
+          },
+          "on-room-statechange": {
+            "isStatic": true,
+            "list-name": "On State Change",
+            "display-text": "On State Change",
+            "description": "Triggered after full state updates have been applied. To detect specific changes use conditions under \"room state\" section."
+          },
+          "on-get-available-rooms": {
+            "isStatic": true,
+            "list-name": "On Get Available Rooms",
+            "display-text": "On Get Available Rooms",
+            "description": "Triggers when available rooms response is ready in the \"Value\" expresssion."
+          },
+          "foreach-room-available": {
+            "isStatic": true,
+            "list-name": "For Each Room Available",
+            "display-text": "For Each Room Available",
+            "description": "Iterates over rooms available (Available during \"On Get Available Rooms\" condition)."
+          },
+
+          "is-message-type": {
+            "list-name": "Compare Message [b]Type[/b]",
+            "display-text": "Message type {0} [i]{1}[/i]",
+            "description": "Returns true if current message type matches the provided value.",
+            "params": {
+              "cmp": {
+                "name": "Comparison",
+                "desc": "How to compare the type."
+              },
+              "type": {
+                "name": "Message type",
+                "desc": "The message type sent by the server."
+              }
+            }
+          },
+          "is-message-value": {
+            "list-name": "Compare Message [b]Value[/b]",
+            "display-text": "Message value {0} [i]{1}[/i]",
+            "description": "Returns true if current message value matches the provided criteria.",
+            "params": {
+              "cmp": {
+                "name": "Comparison",
+                "desc": "How to compare the value."
+              },
+              "value": {
+                "name": "Value",
+                "desc": "The value for comparison"
+              }
+            }
+          },
+          "is-message-value-at": {
+            "list-name": "Compare Message [b]Value At[/b]",
+            "display-text": "Message value at {0} {1} {2}",
+            "description": "Returns true if current message value at matches the provided criteria.",
+            "params": {
+              "path": {
+                "name": "Path",
+                "desc": "A dot separated path to the variable. e.g. \"messages.0\""
+              },
+              "cmp": {
+                "name": "Comparison",
+                "desc": "How to compare the value."
+              },
+              "value": {
+                "name": "Value",
+                "desc": "The value for comparison"
+              }
+            }
+          },
+          "is-message-value-of-type": {
+            "list-name": "Compare Message [b]Value[/b] of Type",
+            "display-text": "Message value of type {0} [i]{1}[/i]",
+            "description": "Returns true if current message value type matches the provided criteria.",
+            "params": {
+              "cmp": {
+                "name": "Comparison",
+                "desc": "How to compare the value.",
+                "items": {
+                  "=": "= Equal to",
+                  "!=": "≠ Not equal to"
+                }
+
+              },
+              "type": {
+                "name": "Type",
+                "desc": "The type expected for the message value.",
+                "items": {
+                  "undefined": "undefined",
+                  "number": "number",
+                  "string": "string",
+                  "boolean": "boolean",
+                  "object": "object"
+                }
+              }
+            }
+          },
+          "is-message-value-of-type-at": {
+            "list-name": "Compare Message [b]Value At[/b] of Type",
+            "display-text": "Message value at {0} of type {1} {2}",
+            "description": "Returns true if current message value type at matches the provided criteria.",
+            "params": {
+              "path": {
+                "name": "Path",
+                "desc": "A dot separated path to the variable. e.g. \"messages.0\""
+              },
+              "cmp": {
+                "name": "Comparison",
+                "desc": "How to compare the value.",
+                "items": {
+                  "=": "= Equal to",
+                  "!=": "≠ Not equal to"
+                }
+              },
+              "type": {
+                "name": "Type",
+                "desc": "The type expected for the message value.",
+                "items": {
+                  "undefined": "undefined",
+                  "number": "number",
+                  "string": "string",
+                  "boolean": "boolean",
+                  "object": "object"
+                }
+              }
+            }
+          },
+
+          "schema-path-change": {
+            "isStatic": true,
+            "list-name": "On Change At",
+            "display-text": "On change at [i]{0}[/i]",
+            "description": "Triggers when a variable changes at a specific path in the state. (e.g. \"player.x\")",
+            "params": {
+              "path": {
+                "name": "Path",
+                "desc": "Path of the variable you'd like to listen for. e.g. \"item.property\""
+              }
+            }
+          },
+
+          "state-items-foreach": {
+            "isStatic": true,
+            "list-name": "For Each Item At",
+            "display-text": "For Each Item At [i]{0}[/i]",
+            "description": "Iterates over the items of an ArraySchema or MapSchema.",
+            "params": {
+              "path": {
+                "name": "Path",
+                "desc": "Path of the variable holding the items"
+              }
+            }
+          },
+
+          "state-collection-item-add": {
+            "isStatic": true,
+            "list-name": "On Add Item",
+            "display-text": "On item added to [i]{0}[/i]",
+            "description": "Triggers when an item is added to ArraySchema or MapSchema.",
+            "params": {
+              "path": {
+                "name": "Path",
+                "desc": "Path of the variable you'd like to listen for. e.g. \"entities\""
+              }
+            }
+          },
+          "state-collection-item-change": {
+            "isStatic": true,
+            "list-name": "On Item Change",
+            "display-text": "On item changed at [i]{0}[/i]",
+            "description": "Triggers when an item is changed inside ArraySchema or MapSchema.",
+            "params": {
+              "path": {
+                "name": "Path",
+                "desc": "Path of the variable you'd like to listen for. e.g. \"entities\""
+              }
+            }
+          },
+          "state-collection-item-remove": {
+            "isStatic": true,
+            "list-name": "On Remove Item",
+            "display-text": "On item removed from [i]{0}[/i]",
+            "description": "Triggers when an item is removed from ArraySchema or MapSchema.",
+            "params": {
+              "path": {
+                "name": "Path",
+                "desc": "Path of the variable you'd like to listen for. e.g. \"entities\""
+              }
+            }
+          },
+
+          "is-state-value-at": {
+            "list-name": "Compare [b]Value At[/b]",
+            "display-text": "Value At [i]{0}[/i] {1} [b]{2}[/b]",
+            "description": "Returns true if current state value at {0} matches the provided criteria.",
+            "params": {
+              "path": {
+                "name": "Path",
+                "desc": "A dot separated path to the variable. e.g. \"entities.item_0.is_alive\""
+              },
+              "cmp": {
+                "name": "Comparison",
+                "desc": "How to compare the value."
+              },
+              "value": {
+                "name": "Value",
+                "desc": "The value for comparison"
+              }
+            }
+          },
+
+          "schema-compare-current-value": {
+            "list-name": "Compare [b]Current Value[/b]",
+            "display-text": "Current Value {0} [b]{1}[/b]",
+            "description": "Returns true if current value matches the provided criteria.",
+            "params": {
+              "cmp": {
+                "name": "Comparison",
+                "desc": "How to compare the value."
+              },
+              "value": {
+                "name": "Value",
+                "desc": "The value for comparison"
+              }
+            }
+          },
+          "schema-compare-current-value-at": {
+            "list-name": "Compare [b]Current Value At[/b]",
+            "display-text": "Current Value at [i]{0}[/i] {1} [b]{2}[/b]",
+            "description": "Returns true if current value matches the provided criteria.",
+            "params": {
+              "path": {
+                "name": "Path",
+                "desc": "A dot separated path to the variable. e.g. \"messages.0\""
+              },
+              "cmp": {
+                "name": "Comparison",
+                "desc": "How to compare the value."
+              },
+              "value": {
+                "name": "Value",
+                "desc": "The value for comparison"
+              }
+            }
+          },
+          "schema-compare-current-key": {
+            "list-name": "Compare [b]Current Key[/b]",
+            "display-text": "Current Key {0} [i]{1}[/i]",
+            "description": "Only available during add/remove of collection items (MapSchema, ArraySchema)",
+            "params": {
+              "cmp": {
+                "name": "Comparison",
+                "desc": "How to compare the value."
+              },
+              "key": {
+                "name": "Key",
+                "desc": "Key value (e.g. Colyseus.SessionId)"
+              }
+            }
+          },
+          "schema-compare-items-at-count": {
+            "list-name": "Compare [b]Items Count At[/b]",
+            "display-text": "Items Count At [i]{0}[/i] {1} [i]{2}[/i]",
+            "description": "Compare the number of items at a specific path in the state.",
+            "params": {
+              "path": {
+                "name": "Path",
+                "desc": "A dot separated path to the variable. e.g. \"players.one.inventory\""
+              },
+              "cmp": {
+                "name": "Comparison",
+                "desc": "How to compare the value."
+              },
+              "count": {
+                "name": "Count",
+                "desc": "Number of items"
+              }
+            }
+          },
+          "schema-compare-current-items-count": {
+            "list-name": "Compare [b]Current Items Count[/b]",
+            "display-text": "Current Items Count {0} [i]{1}[/i]",
+            "description": "Only available during add/remove of collection items (MapSchema, ArraySchema)",
+            "params": {
+              "cmp": {
+                "name": "Comparison",
+                "desc": "How to compare the value."
+              },
+              "count": {
+                "name": "Count",
+                "desc": "Number of items"
+              }
+            }
+          },
+          "schema-array-has-value": {
+            "list-name": "Array At Contains Value",
+            "display-text": "Array At {0} contains [i]{1}[/i]",
+            "description": "Returns true if Array at path in the state has the provided value.",
+            "params": {
+              "path": {
+                "name": "Path",
+                "desc": "A dot separated path to the variable. e.g. \"players.one.inventory\""
+              },
+              "value": {
+                "name": "Value",
+                "desc": "The value to check for"
+              }
+            }
+          },
+          "schema-map-has-key": {
+            "list-name": "Map At Key Exists",
+            "display-text": "Map At {0} has [i]{1}[/i]",
+            "description": "Returns true if Array at path in the state has the provided value.",
+            "params": {
+              "path": {
+                "name": "Path",
+                "desc": "A dot separated path to the variable. e.g. \"players.one.inventory\""
+              },
+              "key": {
+                "name": "Key",
+                "desc": "The key to check for"
+              }
+            }
+          },
+
+          "has-error-code": {
+            "list-name": "Compare Error Code",
+            "display-text": "Error Code [i]{0}[/i] {1}",
+            "description": "Compares the error code of the last error received.",
+            "params": {
+              "cmp": {
+                "name": "Comparison",
+                "desc": "How to compare the value.",
+                "items": {
+                  "=": "= Equal to",
+                  "!=": "≠ Not equal to"
+                }
+              },
+              "code": {
+                "name": "Error Code",
+                "desc": "The error code to compare against."
+              }
+            }
+          },
+          "has-error-message": {
+            "list-name": "Compare Error Message",
+            "display-text": "Error Message [i]{0}[/i] {1}",
+            "description": "Compares the error message of the last error received.",
+            "params": {
+              "cmp": {
+                "name": "Comparison",
+                "desc": "How to compare the message.",
+                "items": {
+                  "=": "= Equal to",
+                  "!=": "≠ Not equal to"
+                }
+              },
+              "message": {
+                "name": "Error Message",
+                "desc": "The error message to compare against."
+              }
+            }
+          }
+
+        },
+
+        "actions": {
+          "set-endpoint": {
+            "list-name": "Set endpoint",
+            "display-text": "Set endpoint to {0}",
+            "description": "Format: wss://example.com",
+            "params": {
+              "endpoint": {
+                "name": "Endpoint",
+                "desc": "Set endpoint to {0}. If empty, uses the Default Endpoint property from the global Colyseus object type."
+              }
+            }
+          },
+
+          "join-room": {
+            "list-name": "Join existing room",
+            "display-text": "Join room {0} with options {1}.",
+            "description": "Join a room by name",
+            "params": {
+              "name": {
+                "name": "Room name",
+                "desc": "The room name is defined via `gameServer.define(\"my_room\", ...)` in your server."
+              },
+              "options": {
+                "name": "Options",
+                "desc": "The provided options will be available in the server-side at both `onJoin()` and `onAuth()` methods."
+              }
+            }
+          },
+
+          "join-or-create-room": {
+            "list-name": "Join or Create",
+            "display-text": "Join room {0} with options {1}.",
+            "description": "Join a room by name",
+            "params": {
+              "name": {
+                "name": "Room name",
+                "desc": "The room name is defined via `gameServer.define(\"my_room\", ...)` in your server."
+              },
+              "options": {
+                "name": "Options",
+                "desc": "The provided options will be available in the server-side at both `onJoin()` and `onAuth()` methods."
+              }
+            }
+          },
+
+          "create-room": {
+            "list-name": "Create room",
+            "display-text": "Create room {0} with options {1}.",
+            "description": "Create a room by name",
+            "params": {
+              "name": {
+                "name": "Room name",
+                "desc": "The room name is defined via `gameServer.define(\"my_room\", ...)` in your server."
+              },
+              "options": {
+                "name": "Options",
+                "desc": "The provided options will be available in the server-side at both `onJoin()` and `onAuth()` methods."
+              }
+            }
+          },
+
+          "join-room-by-id": {
+            "list-name": "Join by ID",
+            "display-text": "Join room {0} with options {1}.",
+            "description": "Join an existing room by its ID",
+            "params": {
+              "roomId": {
+                "name": "Room ID",
+                "desc": "Room ID"
+              },
+              "options": {
+                "name": "Options",
+                "desc": "The provided options will be available in the server-side at both `onJoin()` and `onAuth()` methods."
+              }
+            }
+          },
+
+          "consume-seat-reservation": {
+            "list-name": "Consume Seat Reservation",
+            "display-text": "Consume seat reservation with {0}",
+            "description": "Consume a seat reservation made from the server-side",
+            "params": {
+              "reservation": {
+                "name": "Seat reservation data",
+                "desc": "JSON containing the reservation made from the server-side"
+              }
+            }
+          },
+
+          "reconnect-room": {
+            "list-name": "Reconnect",
+            "display-text": "Reconnect into a room using its cached ReconnectionToken ({0}).",
+            "description": "Reconnect into a previously connected room.",
+            "params": {
+              "reconnectionToken": {
+                "name": "Reconnection Token",
+                "desc": "The ReconnectionToken from previous connection."
+              }
+            }
+          },
+
+          "room-send": {
+            "list-name": "Send message",
+            "display-text": "Send {0} with {1}",
+            "description": "Send message to a room",
+            "params": {
+              "type": {
+                "name": "Type",
+                "desc": "Type of the message."
+              },
+              "message": {
+                "name": "Message",
+                "desc": "Data of your message. Messages arrive on server-side at \"onMessage(type, ...)\"."
+              }
+            }
+          },
+
+          "room-send-json": {
+            "list-name": "Send JSON message",
+            "display-text": "Send {0} with {1}",
+            "description": "Send JSON message to a room",
+            "params": {
+              "type": {
+                "name": "Type",
+                "desc": "Type of the message."
+              },
+              "message": {
+                "name": "JSON Message",
+                "desc": "JSON representation of the message. Messages arrive on server-side at \"onMessage(type, ...)\"."
+              }
+            }
+          },
+
+          "room-leave": {
+            "list-name": "Leave room",
+            "display-text": "Leave from the room with consented = {0}",
+            "description": "Disconnect client from the room.",
+            "params": {
+              "consented": {
+                "name": "consented",
+                "desc": "Whether the act of leaving has been \"consented\" or not"
+              }
+            }
+          },
+
+          "get-available-rooms": {
+            "list-name": "Get available rooms",
+            "display-text": "Get available rooms by name: {0}",
+            "description": "Get available rooms by name, \"On Get Available Rooms\" is triggered when data is available.",
+            "params": {
+              "name": {
+                "name": "Room name",
+                "desc": "The room name is defined via `gameServer.define(\"my_room\", ...)` in your server."
+              }
+            }
+          }
+        },
+
+        "expressions": {
+          "get-endpoint": {
+            "description": "Get server endpoint",
+            "translated-name": "Endpoint"
+          },
+          "json": {
+            "description": "Evaluates provided string and return stringified JSON object",
+            "translated-name": "JSON",
+            "params": {
+              "data": {
+                "name": "Data",
+                "desc": "Plain JavaScript Object inside a string"
+              }
+            }
+          },
+          "current-key": {
+            "description": "Get current item key",
+            "translated-name": "CurrentKey"
+          },
+          "current-value": {
+            "description": "Get value from current item",
+            "translated-name": "CurrentValue"
+          },
+          "current-value-at": {
+            "description": "Get nested value from current item",
+            "translated-name": "CurrentValueAt",
+            "params": {
+              "path": {
+                "name": "Variable Path",
+                "desc": "A dot separated path to the variable. e.g. \"messages.0\""
+              }
+            }
+          },
+          "previous-value": {
+            "description": "Get previous value from current field. Only available during \"On change\" on an instance variable. Not avaialble for arrays and maps.",
+            "translated-name": "PreviousValue"
+          },
+          "state-value": {
+            "description": "Get a value from room's state",
+            "translated-name": "State",
+            "params": {
+              "path": {
+                "name": "Variable Path",
+                "desc": "A dot separated path to the variable. e.g. \"messages.0\""
+              }
+            }
+          },
+          "current-state-path": {
+            "description": "Get current path being evaluated from state",
+            "translated-name": "CurrentStatePath"
+          },
+          "room-id": {
+            "description": "Get roomId of the room connected.",
+            "translated-name": "RoomId"
+          },
+          "room-name": {
+            "description": "Get the name of the room connected.",
+            "translated-name": "RoomName"
+          },
+          "session-id": {
+            "description": "Get unique sessionId for the client. (This property matches the client.sessionId from the server-side)",
+            "translated-name": "SessionId"
+          },
+          "reconnection-token": {
+            "description": "Get reconnection token to be used in the Reconnect action. (Available during \"On Join\")",
+            "translated-name": "ReconnectionToken"
+          },
+          "message-type": {
+            "description": "Get current message type. (Available during \"On Message\")",
+            "translated-name": "MessageType"
+          },
+          "message-value": {
+            "description": "Get current message value. (Available during \"On Message\")",
+            "translated-name": "MessageValue"
+          },
+          "message-value-at": {
+            "description": "Get a nested value on current message. (Available during \"On Message\")",
+            "translated-name": "MessageValueAt",
+            "params": {
+              "path": {
+                "name": "Variable Path",
+                "desc": "A dot separated path to the variable. e.g. \"skills.length\", \"skills.0.name\""
+              }
+            }
+          },
+          "message-value-type": {
+            "description": "Get the data type of MessageValue. Possible return values: \"undefined\", \"number\", \"string\", \"boolean\", \"object\".",
+            "translated-name": "MessageValueType"
+          },
+          "message-value-at-type": {
+            "description": "Get the data type of MessageValueAt. Possible return values: \"undefined\", \"number\", \"string\", \"boolean\", \"object\".",
+            "translated-name": "MessageValueAtType",
+            "params": {
+              "path": {
+                "name": "Variable Path",
+                "desc": "A dot separated path to the variable. e.g. \"skills.length\", \"skills.0.name\""
+              }
+            }
+          },
+
+          "current-items-count": {
+            "description": "Get total number of items on current collection. (Available during add/remove item events)",
+            "translated-name": "CurrentItemsCount"
+          },
+
+          "count-items-at": {
+            "description": "Get total number of items at a path. (Path must be a MapSchema or ArraySchema)",
+            "translated-name": "CountItemsAt",
+            "params": {
+              "path": {
+                "name": "Variable Path",
+                "desc": "A dot separated path to the variable. e.g. \"skills.length\", \"skills.0.name\""
+              }
+            }
+          },
+
+          "close-code": {
+            "description": "Get close code from the last disconnection. (Available during \"On Leave Room\")",
+            "translated-name": "CloseCode"
+          },
+          "error-code": {
+            "description": "Get last error code",
+            "translated-name": "ErrorCode"
+          },
+          "error-message": {
+            "description": "Get last error message",
+            "translated-name": "ErrorMessage"
+          },
+
+          "error-code-sdk-exception": {
+            "description": "Internal SDK error/exception",
+            "translated-name": "ErrorCode_SDK_EXCEPTION"
+          },
+          "error-code-server-offline": {
+            "description": "0 → Server is offline",
+            "translated-name": "ErrorCode_SERVER_OFFLINE"
+          },
+          "error-code-no-handler": {
+            "description": "4210 → No room handler for provided room name type",
+            "translated-name": "ErrorCode_NO_HANDLER"
+          },
+          "error-code-invalid-criteria": {
+            "description": "4211 → Invalid criteria for room selection",
+            "translated-name": "ErrorCode_INVALID_CRITERIA"
+          },
+          "error-code-invalid-room-id": {
+            "description": "4212 → Room not found for provided room id",
+            "translated-name": "ErrorCode_INVALID_ROOM_ID"
+          },
+          "error-code-unhandled": {
+            "description": "4213 → Unhandled server error",
+            "translated-name": "ErrorCode_UNHANDLED"
+          },
+          "error-code-expired": {
+            "description": "4214 → Seat reservation expired.",
+            "translated-name": "ErrorCode_EXPIRED"
+          },
+          "error-code-auth-failed": {
+            "description": "4215 → Authentication failed (`onAuth` failed on the server)",
+            "translated-name": "ErrorCode_AUTH_FAILED"
+          },
+          "error-code-applicataion-error": {
+            "description": "4216 → Application level error",
+            "translated-name": "ErrorCode_APPLICATION_ERROR"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,574 @@
+{
+  "colyseus": {
+    "conditions": [],
+    "actions": [
+      {
+        "id": "set-endpoint",
+        "scriptName": "SetEndpoint",
+        "params": [
+          { "id": "endpoint", "type": "string" }
+        ]
+      }
+    ],
+    "expressions": [
+      {
+        "id": "get-endpoint",
+        "expressionName": "Endpoint",
+        "scriptName": "Endpoint",
+        "returnType": "string"
+      }
+    ]
+  },
+
+  "misc": {
+    "expressions": [
+      {
+        "id": "json",
+        "expressionName": "JSON",
+        "scriptName": "JSON",
+        "returnType": "string",
+        "params": [
+          { "id": "data", "type": "string", "initialValue": "{}" }
+        ]
+      }
+    ]
+  },
+
+  "error-handling": {
+    "conditions": [
+      {
+        "id": "has-error-code",
+        "expressionName": "HasErrorCode",
+        "scriptName": "HasErrorCode",
+        "returnType": "boolean",
+        "params": [
+          { "id": "cmp", "type": "combo", "items": ["=", "!="] },
+          { "id": "code", "type": "number", "initialValue": 0 }
+        ]
+      },
+      {
+        "id": "has-error-message",
+        "expressionName": "HasErrorMessage",
+        "scriptName": "HasErrorMessage",
+        "returnType": "boolean",
+        "params": [
+          { "id": "cmp", "type": "combo", "items": ["=", "!="] },
+          { "id": "message", "type": "string", "initialValue": "" }
+        ]
+      },
+      {
+        "id": "on-error",
+        "scriptName": "OnAnyError",
+        "isTrigger": true
+      }
+    ],
+    "expressions": [
+      {
+        "id": "error-code-sdk-exception",
+        "expressionName": "ErrorCode_SDK_EXCEPTION",
+        "scriptName": "ErrorCode_SDK_EXCEPTION",
+        "returnType": "number"
+      },
+      {
+        "id": "error-code-server-offline",
+        "expressionName": "ErrorCode_SERVER_OFFLINE",
+        "scriptName": "ErrorCode_SERVER_OFFLINE",
+        "returnType": "number"
+      },
+      {
+        "id": "error-code-no-handler",
+        "expressionName": "ErrorCode_NO_HANDLER",
+        "scriptName": "ErrorCode_NO_HANDLER",
+        "returnType": "number"
+      },
+      {
+        "id": "error-code-invalid-criteria",
+        "expressionName": "ErrorCode_INVALID_CRITERIA",
+        "scriptName": "ErrorCode_INVALID_CRITERIA",
+        "returnType": "number"
+      },
+      {
+        "id": "error-code-invalid-room-id",
+        "expressionName": "ErrorCode_INVALID_ROOM_ID",
+        "scriptName": "ErrorCode_INVALID_ROOM_ID",
+        "returnType": "number"
+      },
+      {
+        "id": "error-code-unhandled",
+        "expressionName": "ErrorCode_UNHANDLED",
+        "scriptName": "ErrorCode_UNHANDLED",
+        "returnType": "number"
+      },
+      {
+        "id": "error-code-expired",
+        "expressionName": "ErrorCode_EXPIRED",
+        "scriptName": "ErrorCode_EXPIRED",
+        "returnType": "number"
+      },
+      {
+        "id": "error-code-auth-failed",
+        "expressionName": "ErrorCode_AUTH_FAILED",
+        "scriptName": "ErrorCode_AUTH_FAILED",
+        "returnType": "number"
+      },
+      {
+        "id": "error-code-applicataion-error",
+        "expressionName": "ErrorCode_APPLICATION_ERROR",
+        "scriptName": "ErrorCode_APPLICATION_ERROR",
+        "returnType": "number"
+      }
+    ]
+  },
+
+  "matchmaking": {
+    "conditions": [
+      {
+        "id": "on-join-room",
+        "scriptName": "OnJoinRoom",
+        "highlight": true,
+        "isTrigger": true
+      },
+      {
+        "id": "on-join-error",
+        "scriptName": "OnJoinError",
+        "isTrigger": true
+      },
+      {
+        "id": "on-get-available-rooms",
+        "scriptName": "OnGetAvailableRooms",
+        "isTrigger": true
+      },
+      {
+        "id": "foreach-room-available",
+        "scriptName": "ForEachRoomAvailable",
+        "isLooping": true
+      }
+    ],
+    "actions": [
+      {
+        "id": "join-room",
+        "scriptName": "JoinRoom",
+        "params": [
+          { "id": "name", "type": "string", "initialValue": "\"my_room\""  },
+          { "id": "options", "type": "string", "initialValue": "Colyseus.JSON(\"{token: 'xyz'}\")"  }
+        ]
+      },
+      {
+        "id": "join-or-create-room",
+        "scriptName": "JoinOrCreateRoom",
+        "highlight": true,
+        "params": [
+          { "id": "name", "type": "string", "initialValue": "\"my_room\"" },
+          { "id": "options", "type": "string", "initialValue": "Colyseus.JSON(\"{token: 'xyz'}\")" }
+        ]
+      },
+      {
+        "id": "create-room",
+        "scriptName": "CreateRoom",
+        "params": [
+          { "id": "name", "type": "string", "initialValue": "\"my_room\""  },
+          { "id": "options", "type": "string", "initialValue": "Colyseus.JSON(\"{token: 'xyz'}\")"  }
+        ]
+      },
+      {
+        "id": "join-room-by-id",
+        "scriptName": "JoinRoomById",
+        "params": [
+          { "id": "roomId", "type": "string" },
+          { "id": "options", "type": "string", "initialValue": "Colyseus.JSON(\"{token: 'xyz'}\")"  }
+        ]
+      },
+      {
+        "id": "consume-seat-reservation",
+        "scriptName": "ConsumeSeatReservation",
+        "params": [
+          { "id": "reservation", "type": "string" }
+        ]
+      },
+      {
+        "id": "reconnect-room",
+        "scriptName": "ReconnectRoom",
+        "params": [
+          { "id": "reconnectionToken", "type": "string" }
+        ]
+      },
+      {
+        "id": "get-available-rooms",
+        "scriptName": "GetAvailableRooms",
+        "params": [
+          { "id": "name", "type": "string" }
+        ]
+      }
+    ]
+  },
+
+  "room": {
+    "conditions": [
+      {
+        "id": "on-room-message",
+        "scriptName": "OnMessage",
+        "highlight": true,
+        "isTrigger": true,
+        "params": [
+          { "id": "type", "type": "string" }
+        ]
+      },
+      {
+        "id": "on-leave-room",
+        "scriptName": "OnLeaveRoom",
+        "isTrigger": true
+      },
+      {
+        "id": "on-room-statechange",
+        "scriptName": "OnStateChange",
+        "isTrigger": true
+      },
+      {
+        "id": "on-room-error",
+        "scriptName": "OnRoomError",
+        "isTrigger": true
+      }
+    ],
+
+    "actions": [
+      {
+        "id": "room-leave",
+        "scriptName": "RoomLeave",
+        "params": [
+          { "id": "consented", "type": "boolean", "initialValue": "true" }
+        ]
+      }
+    ],
+
+    "expressions": [
+      {
+        "id": "room-id",
+        "expressionName": "RoomId",
+        "scriptName": "RoomId",
+        "returnType": "string"
+      },
+      {
+        "id": "room-name",
+        "expressionName": "RoomName",
+        "scriptName": "RoomName",
+        "returnType": "string"
+      },
+      {
+        "id": "session-id",
+        "expressionName": "SessionId",
+        "scriptName": "SessionId",
+        "returnType": "any"
+      },
+      {
+        "id": "reconnection-token",
+        "expressionName": "ReconnectionToken",
+        "scriptName": "ReconnectionToken",
+        "returnType": "string"
+      },
+      {
+        "id": "close-code",
+        "expressionName": "CloseCode",
+        "scriptName": "CloseCode",
+        "returnType": "number"
+      },
+      {
+        "id": "error-code",
+        "expressionName": "ErrorCode",
+        "scriptName": "ErrorCode",
+        "returnType": "number"
+      },
+      {
+        "id": "error-message",
+        "expressionName": "ErrorMessage",
+        "scriptName": "ErrorMessage",
+        "returnType": "string"
+      }
+    ]
+  },
+
+  "messages": {
+    "actions": [
+      {
+        "id": "room-send",
+        "scriptName": "RoomSend",
+        "params": [
+          { "id": "type", "type": "string" },
+          { "id": "message", "type": "any" }
+        ]
+      },
+      {
+        "id": "room-send-json",
+        "scriptName": "RoomSendJSON",
+        "params": [
+          { "id": "type", "type": "string" },
+          { "id": "message", "type": "string" }
+        ]
+      }
+    ],
+
+    "conditions":[
+      {
+        "id": "is-message-type",
+        "scriptName": "CompareMessageType",
+        "params": [
+          { "id": "cmp", "type": "cmp" },
+          { "id": "type", "type": "any", "initialValue": "\"start\"" }
+        ]
+      },
+      {
+        "id": "is-message-value",
+        "scriptName": "CompareMessageValue",
+        "params": [
+          { "id": "cmp", "type": "cmp" },
+          { "id": "value", "type": "any" }
+        ]
+      },
+      {
+        "id": "is-message-value-at",
+        "scriptName": "CompareMessageValueAt",
+        "params": [
+          { "id": "path", "type": "string" },
+          { "id": "cmp", "type": "cmp" },
+          { "id": "value", "type": "any" }
+        ]
+      },
+      {
+        "id": "is-message-value-of-type",
+        "scriptName": "CompareMessageValueOfType",
+        "params": [
+          { "id": "cmp", "type": "combo", "items": ["=", "!="] },
+          { "id": "type", "type": "combo", "items": ["string", "number", "boolean", "undefined", "object"] }
+        ]
+      },
+      {
+        "id": "is-message-value-of-type-at",
+        "scriptName": "CompareMessageValueAtOfType",
+        "params": [
+          { "id": "path", "type": "string" },
+          { "id": "cmp", "type": "combo", "items": ["=", "!="]},
+          { "id": "type", "type": "combo", "items": ["string", "number", "boolean", "undefined", "object"] }
+        ]
+      }
+    ],
+
+    "expressions": [
+      {
+        "id": "message-type",
+        "expressionName": "MessageType",
+        "scriptName": "MessageValueType",
+        "returnType": "string"
+      },
+      {
+        "id": "message-value",
+        "expressionName": "MessageValue",
+        "scriptName": "MessageValue",
+        "returnType": "any"
+      },
+      {
+        "id": "message-value-at",
+        "expressionName": "MessageValueAt",
+        "scriptName": "MessageValueAt",
+        "returnType": "any",
+        "params": [
+          { "id": "path", "type": "string", "initialValue": "" }
+        ]
+      },
+      {
+        "id": "message-value-type",
+        "expressionName": "MessageValueType",
+        "scriptName": "MessageValueType",
+        "returnType": "string"
+      },
+      {
+        "id": "message-value-at-type",
+        "expressionName": "MessageValueAtType",
+        "scriptName": "MessageValueAtType",
+        "returnType": "string",
+        "params": [
+          { "id": "path", "type": "string", "initialValue": "" }
+        ]
+      }
+    ]
+  },
+
+  "room-state": {
+    "conditions": [
+      {
+        "id": "schema-path-change",
+        "scriptName": "OnChangeAtPath",
+        "isTrigger": true,
+        "params": [
+          { "id": "path", "type": "string" }
+        ]
+      },
+      {
+        "id": "is-state-value-at",
+        "scriptName": "CompareStateValueAt",
+        "params": [
+          { "id": "path", "type": "string" },
+          { "id": "cmp", "type": "cmp" },
+          { "id": "value", "type": "any" }
+        ]
+      },
+      {
+        "id": "schema-compare-current-value",
+        "scriptName": "CompareCurrentValue",
+        "params": [
+          { "id": "cmp", "type": "cmp" },
+          { "id": "value", "type": "any" }
+        ]
+      },
+      {
+        "id": "schema-compare-current-value-at",
+        "scriptName": "CompareCurrentValueAt",
+        "params": [
+          { "id": "path", "type": "string" },
+          { "id": "cmp", "type": "cmp" },
+          { "id": "value", "type": "any" }
+        ]
+      },
+      {
+        "id": "schema-compare-current-key",
+        "scriptName": "CompareCurrentKey",
+        "params": [
+          { "id": "cmp", "type": "cmp" },
+          { "id": "key", "type": "string" }
+        ]
+      }
+    ],
+
+    "expressions": [
+      {
+        "id": "state-value",
+        "expressionName": "State",
+        "scriptName": "State",
+        "returnType": "any",
+        "params": [
+          { "id": "path", "type": "string", "initialValue": "" }
+        ]
+      },
+      {
+        "id": "current-state-path",
+        "expressionName": "CurrentStatePath",
+        "scriptName": "CurrentStatePath",
+        "returnType": "string"
+      },
+      {
+        "id": "current-key",
+        "expressionName": "CurrentKey",
+        "scriptName": "CurrentKey",
+        "returnType": "any"
+      },
+      {
+        "id": "current-value",
+        "expressionName": "CurrentValue",
+        "scriptName": "CurrentValue",
+        "returnType": "any"
+      },
+      {
+        "id": "current-value-at",
+        "expressionName": "CurrentValueAt",
+        "scriptName": "CurrentValueAt",
+        "returnType": "any",
+        "params": [
+          { "id": "path", "type": "string", "initialValue": "" }
+        ]
+      },
+      {
+        "id": "previous-value",
+        "expressionName": "PreviousValue",
+        "scriptName": "PreviousValue",
+        "returnType": "any"
+      }
+    ]
+  },
+
+  "room-state-collections": {
+    "conditions": [
+      {
+        "id": "state-items-foreach",
+        "scriptName": "ForEachItemAt",
+        "isLooping": true,
+        "params": [
+          { "id": "path", "type": "string" }
+        ]
+      },
+      {
+        "id": "state-collection-item-add",
+        "scriptName": "OnCollectionItemAdd",
+        "isTrigger": true,
+        "highlight": true,
+        "params": [
+          { "id": "path", "type": "string" }
+        ]
+      },
+      {
+        "id": "state-collection-item-change",
+        "scriptName": "OnCollectionItemChange",
+        "isTrigger": true,
+        "params": [
+          { "id": "path", "type": "string" }
+        ]
+      },
+      {
+        "id": "state-collection-item-remove",
+        "scriptName": "OnCollectionItemRemove",
+        "isTrigger": true,
+        "highlight": true,
+        "params": [
+          { "id": "path", "type": "string" }
+        ]
+      },
+      {
+        "id": "schema-compare-items-at-count",
+        "scriptName": "CompareItemsAtCount",
+        "params": [
+          { "id": "path", "type": "string" },
+          { "id": "cmp", "type": "cmp" },
+          { "id": "count", "type": "number" }
+        ]
+      },
+      {
+        "id": "schema-compare-current-items-count",
+        "scriptName": "CompareCurrentItemsCount",
+        "params": [
+          { "id": "cmp", "type": "cmp" },
+          { "id": "count", "type": "number" }
+        ]
+      },
+      {
+        "id": "schema-array-has-value",
+        "scriptName": "ArrayHasValue",
+        "params": [
+          { "id": "path", "type": "string" },
+          { "id": "value", "type": "any" }
+        ]
+      },
+      {
+        "id": "schema-map-has-key",
+        "scriptName": "MapHasKey",
+        "params": [
+          { "id": "path", "type": "string" },
+          { "id": "key", "type": "string" }
+        ]
+      }
+    ],
+    "expressions": [
+      {
+        "id": "current-items-count",
+        "expressionName": "CurrentItemsCount",
+        "scriptName": "CurrentItemsCount",
+        "returnType": "number"
+      },
+      {
+        "id": "count-items-at",
+        "expressionName": "CountItemsAt",
+        "scriptName": "CountItemsAt",
+        "returnType": "number",
+        "params": [
+          { "id": "path", "type": "string" }
+        ]
+      }
+    ]
+  }
+}
