@@ -37,42 +37,28 @@
     OnJoinError() { return true; },
     OnAnyError() { return true; },
     ForEachRoomAvailable() {
-        const globalThis = this;
+    const globalThis = this;
 
-        
-      
-      if (globalThis.lastValue && globalThis.lastValue.length > 0) {
-        const runtime = this._runtime;
-        const eventSheetManager = runtime.GetEventSheetManager();
-        const currentEvent = runtime.GetCurrentEvent();
-        const solModifiers = currentEvent.GetSolModifiers();
-        const eventStack = runtime.GetEventStack();
-
-        // Get current stack frame and push new one
-        const oldFrame = eventStack.GetCurrentStackFrame();
-        const newFrame = eventStack.Push(currentEvent);
-
+    if (globalThis.lastValue && globalThis.lastValue.length > 0) {
+        const loopCtx = this.runtime.sdk.createLoopingConditionContext();
         const rooms = globalThis.lastValue;
-        rooms.forEach(function (item, key) {
-          globalThis.lastKey = key;
-          globalThis.lastValue = item;
 
-          // Push a copy of the current SOL
-          eventSheetManager.PushCopySol(solModifiers);
+        for (let key = 0; key < rooms.length; key++) {
+            globalThis.lastKey = key;
+            globalThis.lastValue = rooms[key];
 
-          // Retrigger the current event, running a single loop iteration
-          currentEvent.Retrigger(oldFrame, newFrame);
+            loopCtx.retrigger();
 
-          // Pop the current SOL
-          eventSheetManager.PopSol(solModifiers);
-        });
+            if (loopCtx.isStopped)
+                break;
+        }
 
-        // Pop the event stack frame
-        eventStack.Pop();
-      }
-      // Return false since event already executed
-      return false;
-    },
+        loopCtx.release();
+    }
+
+    
+    return false;
+},
 
     // Room
     OnLeaveRoom() { return true; },
@@ -128,46 +114,36 @@
     CompareCurrentValue(cmp, value) { return C3.compare(this.lastValue, cmp, value); },
     CompareCurrentValueAt(path, cmp, value) { return C3.compare(this.getDeepVariable(path, this.lastValue), cmp, value); },
     ForEachItemAt(path) {
-      const globalThis = this;
-      const collection = this.getDeepVariable(path, this.room && this.room.state);
-      const validCollection = (collection && typeof (collection.forEach) === "function");
-      if (validCollection) {
-        // Get necessary references
-        // https://www.construct.net/en/make-games/manuals/addon-sdk/runtime-reference/event-sheet-classes/eventblock#internalH1Link0
-        const runtime = this.runtime;
-        const eventSheetManager = runtime.GetEventSheetManager();
-        const currentEvent = runtime.GetCurrentEvent();
-        const solModifiers = currentEvent.GetSolModifiers();
-        const eventStack = runtime.GetEventStack();
+    const globalThis = this;
+    const collection = this.getDeepVariable(path, this.room && this.room.state);
+    const validCollection = (collection && typeof collection.forEach === "function");
 
+    if (validCollection) {
+        // Save the reference collection for future use (if needed)
         this.lastCollectionPath = path;
         this.lastCollection = collection;
 
-        // Get current stack frame and push new one
-        const oldFrame = eventStack.GetCurrentStackFrame();
-        const newFrame = eventStack.Push(currentEvent);
+        // Create a looping context to manage event iterations
+        const loopCtx = this.runtime.sdk.createLoopingConditionContext();
 
-        collection.forEach(function (item, key) {
-          globalThis.lastKey = key;
-          globalThis.lastPath = path + "." + key;
-          globalThis.lastValue = item;
+        // Use a for loop to check for termination conditions (isStopped)
+        for (let key = 0; key < collection.length; key++) {
+            globalThis.lastKey = key;
+            globalThis.lastPath = path + "." + key;
+            globalThis.lastValue = collection[key];
 
-          // Push a copy of the current SOL
-          eventSheetManager.PushCopySol(solModifiers);
+            loopCtx.retrigger();
+            if (loopCtx.isStopped)
+                break;
+        }
 
-          // Retrigger the current event, running a single loop iteration
-          currentEvent.Retrigger(oldFrame, newFrame);
+        loopCtx.release();
+    }
 
-          // Pop the current SOL
-          eventSheetManager.PopSol(solModifiers);
-        });
+ 
+    return false;
 
-        // Pop the event stack frame
-        eventStack.Pop();
-      }
-      // Return false since event already executed
-      return false;
-    },
+},
 
     // Error handling
     HasErrorCode(cmp, code) { return this.lastError && C3.compare(this.lastError.code, cmp, code); },
